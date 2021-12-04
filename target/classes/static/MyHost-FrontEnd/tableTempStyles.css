@@ -1,0 +1,349 @@
+{
+    box-sizing: border-box;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+
+
+/*Navigation/Header bar CSS*/
+.navBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .navBar li {
+        display: inline-block;
+        padding: 5px;
+        vertical-align: middle;
+    }
+
+/*Header Button (White) CSS*/
+.headerButton {
+    background-color: antiquewhite;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.header {
+    background-color: #FB8064;
+    color: #ffffff;
+    padding: 15px;
+}
+
+.aside {
+    background-color: #33b5e5;
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+/*Footer CSS*/
+.footer {
+    background-color: #0099cc;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+}
+
+
+/*Main Button (Orange) CSS*/
+.button {
+    background-color: #FB8064;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+/*Table CSS to hold table information and shape*/
+.display {
+    background-color: antiquewhite;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #777;
+    table-layout: auto;
+    align-content: center;
+    overflow: visible;
+}
+
+/*Tables and Types CSS*/
+.table {
+    background-color: #ccc;
+    height: 20px;
+    width: 40px;
+    margin: 5px;
+}
+
+.roundTable {
+    background-color: #6feaf6;
+    height: 75px;
+    width: 75px;
+    margin: 10px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.cornerBooth {
+    background-color: #6feaf6;
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.longTable {
+    background-color: #6feaf6;
+    height: 50px;
+    width: 100px;
+    margin: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.squareTable {
+    background-color: #6feaf6;
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+/*Organizing body content*/
+.row {
+    display: flex;
+}
+
+/*Testing CSS Grid Format*/
+/*Resource: https://www.w3schools.com/css/css_grid.asp */
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'header header header header header header'
+        'menu menu menu right right right'
+        'menu menu menu right right right'
+        'menu menu menu footer footer footer'
+        'menu menu menu footer footer footer';
+    grid-gap: 5px;
+    padding: 10px;
+}
+
+    .grid-container > div {
+        background-color: wheat;
+        text-align: center;
+        padding: 20px 0;
+    }
+/*Resource used: https://www.w3schools.com/css/css_grid_item.asp */
+.item1 {
+    grid-area: header;
+    grid-column: 2 / 6;
+    font-size: 20px;
+}
+
+/*Resource used: https://stackoverflow.com/questions/114543/how-to-horizontally-center-an-element */
+.item2 {
+    grid-area: menu;
+    grid-column: 2 / 4;
+    grid-row: 2 / 6;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.item4 {
+    grid-area: right;
+    grid-column: 4 / 6;
+    font-size: 15px;
+}
+
+.item5 {
+    grid-area: footer;
+    grid-column: 4 / 6;
+}
+
+/*Form CSS*/
+/*Resource used: https://www.w3schools.com/css/css_form.asp */
+input[type=text], input[type=number], input[type=tel], select{
+    width: 50%;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: 1px solid white;
+}
+
+    input:focus {
+        border: 1px solid #FB8064;
+    }
+
+input[type=submit] {
+    width: 25%;
+    background-color: #FB8064;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+/*Mobile/Tablet Formatting*/
+[class*="col-"] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-s-1 {
+        width: 8.33%;
+    }
+
+    .col-s-2 {
+        width: 16.66%;
+    }
+
+    .col-s-3 {
+        width: 25%;
+    }
+
+    .col-s-4 {
+        width: 33.33%;
+    }
+
+    .col-s-5 {
+        width: 41.66%;
+    }
+
+    .col-s-6 {
+        width: 50%;
+    }
+
+    .col-s-7 {
+        width: 58.33%;
+    }
+
+    .col-s-8 {
+        width: 66.66%;
+    }
+
+    .col-s-9 {
+        width: 75%;
+    }
+
+    .col-s-10 {
+        width: 83.33%;
+    }
+
+    .col-s-11 {
+        width: 91.66%;
+    }
+
+    .col-s-12 {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}

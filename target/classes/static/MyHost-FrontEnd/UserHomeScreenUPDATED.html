@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  border: 2px solid #FB8064;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+.header1{
+    text-align:center;
+    background-color: #fde1d8;
+}
+.textcenter{
+    text-align:center;
+}
+.navBar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.header {
+    background-color: #FB8064;
+    color: #ffffff;
+    padding: 15px;
+}
+.headerButton {
+  background-color: antiquewhite;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.btn-group button {
+  background-color: white; /* Green background */
+  border: 1px solid #FB8064; /* Green border */
+  color: black; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 50%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+  display:inline-block;
+  text-align:center;
+  }
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #FB8064;
+}
+p {text-align: center;}
+</style>
+</head>
+<body>
+<div class="header">
+        <ul class="navBar">
+            <li><h1>MyHost</h1></li>
+            <li style="float:right"><button class="headerButton" type=button><a href="home.html" style="text-decoration:none;" align="right">Logout</button></a> </li>
+            <li style="float:right"><button class="headerButton" type=button><a href="account.html" style="text-decoration:none;"align="right">Account</button></a></li>
+        </ul>
+    </div>
+    <br>
+<br>
+<br>
+
+<div class="row">
+  <div class="column" style="background-color:#bbb;">
+    <h2 class=header1>Previous Searches</h2>
+    <div class="btn-group">
+    <p>
+  <button>Johnny Brusco's</button>
+  <br>
+  <button>Chili's</button>
+  <br>
+  <button>Ducksworth Taphouse and Grill</button>
+  <br>
+  <button>Blacow</button>
+  <br>
+</div>
+    </p>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2 class=header1>Current Reservations</h2>
+    <p class=textcenter>No reservations made yet!</p>
+  </div>
+</div>
+
+</body>
+</html>

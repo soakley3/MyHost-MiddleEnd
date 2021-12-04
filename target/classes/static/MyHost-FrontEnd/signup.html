@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="signupStyles.css">
+</head>
+<body>
+<!-- Signupp -->
+    <div class="header">
+      <h1>MyHost</h1>
+    </div>
+
+    <div class="row">
+
+      <div class="col-6 col-s-9">
+        <h1>Join MyHost</h1>
+        <div class="container">
+          <input type="text" placeholder="Enter Username" name="uname" required><br><br>
+
+          <input type="text" placeholder="Enter Email" name="email" required><br><br>
+
+          <input type="password" placeholder="Enter Password" name="psw" required><br><br>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember Me
+          </label><br><br>
+        </div>
+      </div>
+
+      <div class="btns">
+      <div class="col-3 col-s-3 menu">
+        <ul>
+          <li>Sign Up</li>
+          <li>Take Me Back</li>
+        </ul>
+      </div>
+      </div>
+
+    </div>
+
+    <script>
+    let listItems = document.querySelectorAll('.btns li');
+
+    listItems.forEach((item, index) => {
+      item.addEventListener('click', (event) => {
+        if (event.currentTarget.innerHTML == "Sign Up") {
+          alert("Congratulations on registering with MyHost - let's get logged in.");
+          window.location = "login.html"    // NEED TO ACTUALLY CODE SIGN UP DETAILS 
+        }
+        if (event.currentTarget.innerHTML == "Take Me Back") {
+          //alert(`${event.currentTarget.innerHTML} item was click`);
+          window.location = "home.html"     // TAKE BACK TO HOME PAGE
+        }
+      });
+    });
+
+    </script>
+</body>
+</html>
+
+
+

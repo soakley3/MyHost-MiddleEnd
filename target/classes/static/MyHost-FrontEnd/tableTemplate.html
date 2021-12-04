@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="tableTempStyles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+
+        <div class="header">
+            <ul class="navBar">
+                <li><h1><a href="UserHomeScreen.html" style="text-decoration: none; color: inherit">MyHost</a></h1></li>
+                <li style="float:right"><button class="headerButton" type=button><a href="home.html" style="text-decoration: none; color: inherit" align="right">Logout</button></a> </li>
+                <li style="float:right"><button class="headerButton" type=button><a href="account.html" style="text-decoration: none; color: inherit" align="right">Account</button></a></li>
+            </ul>
+        </div>
+
+        <div class="grid-container">
+            <div class="item1">
+                <h3 id="tableDisplay">N/A Table</h3>
+                <h4 id="queueTime">N/A</h4>
+                <h4 id="queueTotal">N/A</h4>
+            </div>
+            <div class="item2">
+                <table class="display">
+                    <tr>
+                        <td>
+                            <p id="seats"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <div class="" id="diagram" style="transform: scale(1.5)"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="item4">
+                <form id="reservationForm">
+                    <input type="text" id="name" name="name" placeholder="Group Name" required/>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number 123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+                    <input type="number" id="partySize" name="partySize" min="1" max="6" placeholder="Party Size" required/><br />
+                    <input type="checkbox" id="optIn" name="optIn" value="Yes" />
+                    <label for="optIn">Seat my party sooner if a different table is available</label><br />
+                    <button class="button tempTable" id="Yes" onclick="chooseTable()">Choose this table!</button>
+                </form>
+            </div>
+            <div class="item5">
+                <button class="button tempTable" id="No" onclick="goBack()">I've changed my mind!</button>
+            </div>
+        </div>
+
+        <script>
+
+            //Window Load
+            window.onload = function () {
+                //Getting session data of table item
+                var tableSelected = sessionStorage.getItem("table");
+                document.getElementById("tableDisplay").innerHTML = "Selection: " + tableSelected;
+
+                var tableID = sessionStorage.getItem("id");
+                document.getElementById("queueTime").innerHTML = "Table ID Test: " + tableID;
+
+                //Test Strings for socket communication --> client request string, reply for table w/ queue, reply for table w/out queue
+                var clientRequest = "queueTotal:table:1";
+                var serverReply1 = "table:1:2";
+                var serverReply2 = "table:1:0";
+
+                checkQueue1(serverReply1);
+
+
+                //Getting session data of type item
+                var type = sessionStorage.getItem("type");
+
+                //Corner table
+                if (type.includes('cornerBooth') == true) {
+                    document.getElementById("seats").innerHTML = "This booth has 5 seats.";
+                    document.getElementById("diagram").className = "cornerBooth";
+                    document.getElementById("partySize").max = 5;
+                }
+                //Booth
+                else if (type.includes('longTable') == true && tableSelected.includes('Booth') == true) {
+                    document.getElementById("seats").innerHTML = "This booth has 4 seats.";
+                    document.getElementById("diagram").className = "longTable";
+                    document.getElementById("partySize").max = 4;
+                }
+                //Long table
+                else if (type.includes('longTable') == true) {
+                    document.getElementById("seats").innerHTML = "This table has 6 seats.";
+                    document.getElementById("diagram").className = "longTable";
+                    document.getElementById("partySize").max = 6;
+                }
+                //Round table
+                else if (type.includes('roundTable') == true) {
+                    document.getElementById("seats").innerHTML = "This table has 4 seats.";
+                    document.getElementById("diagram").className = "roundTable";
+                    document.getElementById("partySize").max = 4;
+                }
+                //Square table
+                else if (type.includes('squareTable') == true) {
+                    document.getElementById("seats").innerHTML = "This table has 2 seats.";
+                    document.getElementById("diagram").className = "squareTable";
+                    document.getElementById("partySize").max = 2;
+                }
+                else {
+                    //Placeholder if more table types need to be added
+                }
+            }
+
+            //Server reply function
+            //Splits reply into array, checks number of groups in queue and responds accordingly
+            function checkQueue1(reply) {
+                var replyArray = reply.split(":");
+
+                if (replyArray[2] > 0) {
+                    var time = replyArray[2] * 45.00;
+                    if (time >= 60) {
+                        var adjusTime = time / 60.00;
+                        time = adjusTime;
+                    }
+
+                    document.getElementById("queueTime").innerHTML = "Current Wait: " + time + " hrs.";
+                    document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
+                } else {
+                    document.getElementById("queueTime").innerHTML = "Current Wait: Available";
+                    document.getElementById("queueTotal").innerHTML = "Groups in Queue: " + replyArray[2];
+                }
+            }
+
+            //Submitting reservation javascript
+            function chooseTable() {
+                document.getElementById("reservationForm").submit();
+            }
+
+            //Goes back to user home screen
+            function goBack() {
+                location.href = "tablemap.html";
+            }
+        </script>
+    </body>
+</html>

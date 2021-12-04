@@ -1,0 +1,512 @@
+{
+    box-sizing: border-box;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+/*Header CSS*/
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+
+.header {
+    background-color: #FB8064;
+    color: #ffffff;
+    padding: 15px;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.menu li {
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color: #FE542D;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+    .menu li:hover {
+        background-color: #0099cc;
+    }
+
+.navBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .navBar li {
+        display: inline-block;
+        padding: 5px;
+        vertical-align: middle;
+    }
+
+.headerButton {
+    background-color: antiquewhite;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.aside {
+    background-color: #33b5e5;
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+/*Admin body content CSS*/
+/*Grid*/
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'header header header header header header header'
+        'sec1a sec2a sec3a sec4a sec5a sec6a sec7a form'
+        'sec1b sec2b sec3b sec4b sec5b sec6b sec7b form'
+        'sec1c sec2c sec3c sec4c sec5c sec6c sec7c form'
+        'sec1d sec2d sec3d sec4d sec5d sec6d sec7d form';
+        grid-gap: 5px;
+    padding: 10px;
+}
+
+    .grid-container > div {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+.headerGrid {
+    grid-area: header;
+    grid-column: 1 / 20;
+    grid-row: 1 / 1;
+    background-color: wheat;
+}
+
+.form {
+    grid-area: form;
+    grid-column: 10 / 18;
+    grid-row: 2 / 12;
+    background-color: wheat;
+}
+
+/*Row A*/
+.sec1a {
+    grid-area: sec1a;
+    grid-column: 1 / 1;
+    grid-row: 2 / 3;
+    background-color: wheat;
+    border: 2px solid black;
+}
+.sec2a {
+    grid-area: sec2a;
+    grid-column: 2 / 2;
+    grid-row: 2 / 3;
+    background-color: wheat;
+    border: 2px solid black;
+}
+.sec3a {
+    grid-area: sec3a;
+    grid-column: 3 / 3;
+    grid-row: 2 / 3;
+    background-color: wheat;
+    border: 2px solid black;
+}
+.sec4a {
+    grid-area: sec4a;
+    grid-column: 4 / 4;
+    grid-row: 2 / 3;
+    background-color: wheat;
+    border: 2px solid black;
+}
+.sec5a {
+    grid-area: sec5a;
+    grid-column: 5 / 5;
+    grid-row: 2 / 3;
+    background-color: wheat;
+    border: 2px solid black;
+}
+.sec6a {
+    grid-area: sec6a;
+    grid-column: 6 / 6;
+    grid-row: 2 / 3;
+    background-color: wheat;
+    border: 2px solid black;
+}
+.sec7a {
+    grid-area: sec7a;
+    grid-column: 7 / 7;
+    grid-row: 2 / 3;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+/*Row B*/
+.sec1b {
+    grid-area: sec1b;
+    grid-column: 1 / 1;
+    grid-row: 3 / 4;
+    background-color: wheat;
+    border: 2px solid black;
+}
+.sec2b {
+    grid-area: sec2b;
+    grid-column: 2 / 2;
+    grid-row: 3 / 4;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec3b {
+    grid-area: sec3b;
+    grid-column: 3 / 3;
+    grid-row: 3 / 4;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec4b {
+    grid-area: sec4b;
+    grid-column: 4 / 4;
+    grid-row: 3 / 4;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec5b {
+    grid-area: sec5b;
+    grid-column: 5 / 5;
+    grid-row: 3 / 4;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec6b {
+    grid-area: sec6b;
+    grid-column: 6 / 6;
+    grid-row: 3 / 4;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec7b {
+    grid-area: sec7b;
+    grid-column: 7 / 7;
+    grid-row: 3 / 4;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+/*Row C*/
+.sec1c {
+    grid-area: sec1c;
+    grid-column: 1 / 1;
+    grid-row: 4 / 5;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec2c {
+    grid-area: sec2c;
+    grid-column: 2 / 2;
+    grid-row: 4 / 5;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec3c {
+    grid-area: sec3c;
+    grid-column: 3 / 3;
+    grid-row: 4 / 5;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec4c {
+    grid-area: sec4c;
+    grid-column: 4 / 4;
+    grid-row: 4 / 5;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec5c {
+    grid-area: sec5c;
+    grid-column: 5 / 5;
+    grid-row: 4 / 5;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec6c {
+    grid-area: sec6c;
+    grid-column: 6 / 6;
+    grid-row: 4 / 5;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec7c {
+    grid-area: sec7c;
+    grid-column: 7 / 7;
+    grid-row: 4 / 5;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+/*Row D*/
+.sec1d {
+    grid-area: sec1d;
+    grid-column: 1 / 1;
+    grid-row: 5 / 6;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec2d {
+    grid-area: sec2d;
+    grid-column: 2 / 2;
+    grid-row: 5 / 6;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec3d {
+    grid-area: sec3d;
+    grid-column: 3 / 3;
+    grid-row: 5 / 6;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec4d {
+    grid-area: sec4d;
+    grid-column: 4 / 4;
+    grid-row: 5 / 6;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec5d {
+    grid-area: sec5d;
+    grid-column: 5 / 5;
+    grid-row: 5 / 6;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec6d {
+    grid-area: sec6d;
+    grid-column: 6 / 6;
+    grid-row: 5 / 6;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+.sec7d {
+    grid-area: sec7d;
+    grid-column: 7 / 7;
+    grid-row: 5 / 6;
+    background-color: wheat;
+    border: 2px solid black;
+}
+
+/*Form CSS*/
+/*Resource used: https://www.w3schools.com/css/css_form.asp */
+input[type=text], input[type=number], input[type=tel], select {
+    width: 50%;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: 1px solid white;
+}
+
+input:focus {
+    border: 1px solid #FB8064;
+}
+
+input[type=submit] {
+    width: 25%;
+    background-color: #FB8064;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+    /*Footer CSS*/
+    .footer {
+    background-color: #0099cc;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+}
+
+/*Buttons CSS*/
+.btns2 {
+    position: absolute;
+    top: 182px;
+    ;
+    margin-left: 1000px;
+    width: 1200px;
+}
+
+.btns {
+    position: absolute;
+    top: 262px;
+    ;
+    margin-left: 579px;
+    width: 1200px;
+}
+
+.tableButton {
+    background-color: #FB8064;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+/*More Header CSS*/
+.head2 {
+    margin-left: 55px;
+}
+
+.head1 {
+    margin-left: 600px;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-s-1 {
+        width: 8.33%;
+    }
+
+    .col-s-2 {
+        width: 16.66%;
+    }
+
+    .col-s-3 {
+        width: 25%;
+    }
+
+    .col-s-4 {
+        width: 33.33%;
+    }
+
+    .col-s-5 {
+        width: 41.66%;
+    }
+
+    .col-s-6 {
+        width: 50%;
+    }
+
+    .col-s-7 {
+        width: 58.33%;
+    }
+
+    .col-s-8 {
+        width: 66.66%;
+    }
+
+    .col-s-9 {
+        width: 75%;
+    }
+
+    .col-s-10 {
+        width: 83.33%;
+    }
+
+    .col-s-11 {
+        width: 91.66%;
+    }
+
+    .col-s-12 {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}
+
+.ulBorder {
+    border: 10px solid #a1a1a1
+}

@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+
+.header {
+  background-color: #FB8064;
+  color: #ffffff;
+  padding: 15px;
+}
+.header2{
+    left-align: 100px;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #FE542D;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.menu li:hover {
+  background-color: #0099cc;
+}
+
+.navBar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navBar li {
+  display: inline-block;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.headerButton {
+  background-color: antiquewhite;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.aside {
+  background-color: #33b5e5;
+  padding: 15px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.footer {
+  background-color: #0099cc;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  padding: 15px;
+}
+.btns2{
+  position:absolute;
+  top: 182px;;
+  margin-left: 800px;
+  width: 1200px; 
+}
+
+.btns{
+  position:absolute;
+  top: 262px;;
+  margin-left: 500px;
+  width: 1200px;
+}
+
+.head2{
+   margin-left:20px;
+}
+
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+.ulBorder{
+    border:10px solid #a1a1a1
+}
+
+</style>
+</head>
+<body>
+
+
+    <div class="header">
+        <ul class="navBar">
+            <li><h1><a href="UserHomeScreen.html" style="text-decoration: none; color: inherit">MyHost</a></h1></li>
+            <li style="float:right"><button class="headerButton" type=button><a href="home.html" style="text-decoration: none; color: inherit" align="right">Logout</button></a> </li>
+            <li style="float:right"><button class="headerButton" type=button><a href="account.html" style="text-decoration: none; color: inherit" align="right">Account</button></a></li>
+        </ul>
+    </div>
+
+
+<br>
+<br>
+<br>
+     
+
+        <FRAMESET COLS="col-s-3 menu">
+        <div class="btns2">
+         <h1 class="header2">Active Reservations</h1>
+         <div class="col-s-3 menu">
+            <ul>
+                    <li>Duckworths Taphouse and Grill (11/5/2021, 6 people, 7:00pm EST)</li>
+                    <br>
+                    <li>131 Main (11/15/2021, 4 people, 6:00pm EST)</li>
+                    <br>
+                    <li>Blacow (12/1/2021, 2 people, 7:30pm EST)</li>
+                    
+                    <div class="btns">
+                    <div class="col-s-3 menu">
+                    <ul>
+                    <li>Back to Home Screen</li>
+                     </ul>
+                      </div>
+                       </div>
+            </ul>
+        </div>
+         </div>
+         </FRAMESET>
+
+
+         
+
+         
+
+    <script>
+        let Settings = document.querySelectorAll('.btns li');
+
+        Settings.forEach((item, index) => {
+            item.addEventListener('click', (event) => {
+                window.location = "UserHomeScreen.html";
+            });
+        });
+    </script>
+
+
+
+
+
+    </body>
+</html>

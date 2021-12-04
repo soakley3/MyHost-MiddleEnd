@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+
+        <div class="header">
+            <ul class="navBar">
+                <li><h1><a href="UserHomeScreen.html" style="text-decoration: none; color: inherit">MyHost</a></h1></li>
+                <li style="float:right"><button class="headerButton" type=button><a href="home.html" style="text-decoration: none; color: inherit" align="right">Logout</button></a> </li>
+                <li style="float:right"><button class="headerButton" type=button><a href="account.html" style="text-decoration: none; color: inherit" align="right">Account</button></a></li>
+            </ul>
+        </div>
+
+    
+
+        <div class="row">
+
+          <div class="col-6 col-s-9">
+            <button class="button" type="button" id="backToHome" onclick="goBack()">Back to Home</button>
+            <button class="button" type="button" id="refresh" onclick="refreshLong()">Refresh</button>
+            <h2>Ducksworth's Taphouse and Grill</h2>
+            
+              <h3>Table Guide</h3>
+              <ul class="tableGuide">
+                  <li>
+                      <div class="table available"></div>
+                      <small>Available</small>
+                  </li>
+                  <li>
+                      <div class="table unavailable"></div>
+                      <small>Unavailable</small>
+                  </li>
+              </ul>
+
+
+              <div class="tableDisplay">
+
+                  <table class="layout">
+                      <!--Row 1-->
+                      <tr>
+                          <td>
+                              <div class="cornerBooth" id="1">Corner Booth 1</div>
+                          </td>
+                          <td style="vertical-align: top">
+                              <div class="longTable" id="2">Booth 2</div>
+                          </td>
+                          <td style="vertical-align: top">
+                              <div class="longTable" id="3">Booth 3</div>
+                          </td>
+                          <td style="vertical-align: top">
+                              <div class="longTable" id="4">Booth 4</div>
+                          </td>
+                          <td style="vertical-align: top">
+                              <div class="longTable" id="5">Booth 5</div>
+                          </td>
+                          <td style="vertical-align: top">
+                              <div class="longTable" id="6">Booth 6</div>
+                          </td>
+                          <td>
+                              <div class="cornerBooth" id="7">Corner Booth 7</div>
+                          </td>
+                      </tr>
+                      <!--Row 2-->
+                      <tr>
+                          <td>
+                              <div class="roundTable" id="8">Table 8</div>
+                          </td>
+                          <td align="right">
+                              <div class="squareTable" id="9">Table 9</div>
+                          </td>
+                          <td>
+                              <div class="longTable" id="10">Table 10</div>
+                          </td>
+                          <td>
+                              <div class="longTable" id="11"">Table 11</div>
+                          </td>
+                          <td>
+                              <div class="longTable" id="12">Table 12</div>
+                          </td>
+                          <td>
+                              <div class="squareTable" id="13">Table 13</div>
+                          </td>
+                          <td align="right">
+                              <div class="roundTable" id="14">Table 14</div>
+                          </td>
+                      </tr>
+                      <!--Row 3-->
+                      <tr>
+                          <td>
+                              <div class="roundTable" id="15">Table 15</div>
+                          </td>
+                          <td align="right">
+                              <div class="squareTable" id="16">Table 16</div>
+                          </td>
+                          <td>
+                              <div class="longTable" id="17">Table 17</div>
+                          </td>
+                          <td>
+                              <div class="longTable" id="18">Table 18</div>
+                          </td>
+                          <td>
+                              <div class="longTable" id="19">Table 19</div>
+                          </td>
+                          <td>
+                              <div class="squareTable" id="20">Table 20</div>
+                          </td>
+                          <td align="right">
+                              <div class="roundTable" id="21">Table 21</div>
+                          </td>
+                      </tr>
+                      <!--Row 4-->
+                      <tr>
+                          <td>
+                              <div class="roundTable" id="22">Table 22</div>
+                          </td>
+                          <td colspan="5"></td>
+                          <td align="right">
+                              <div class="roundTable" id="23">Table 23</div>
+                          </td>
+                      </tr>
+                  </table>
+              </div>
+          </div>
+        </div>
+
+    
+        <script>
+
+            //Server reply testing code --> 1 is short string, 2 is entire string
+            var serverReply1 = "table:1:true";
+            var serverReply2 = "table:1:true:table:2:true:table:3:false:table:4:true:table:5:false:table:6:true" +
+                ":table:7:true:table:8:true:table:9:false:table:10:true:table:11:true:table:12:true" +
+                ":table:13:false:table:14:true:table:15:true:table:16:false:table:17:false:table:18:false" +
+                ":table:19:false:table:20:false:table:21:true:table:22:true:table:23:true";
+
+            //Client request testing code --> 1 is short string, 2 is entire string
+            var clientRequest1 = "isFree:table:1";
+            var clientRequest2 = "isFree:table:1:isFree:table:2:isFree:table:3:isFree:table:4:isFree:table:5:isFree:table:6:isFree:table:7" +
+                ":isFree:table:8:isFree:table:9:isFree:table:10:isFree:table:11:isFree:table:12:isFree:table:13:isFree:table:14" + 
+                "isFree:table:15:isFree:table:16:isFree:table:17:isFree:table:18:isFree:table:19:isFree:table:20:isFree:table:21:isFree:table:22:isFree:table:23";
+        
+            const cornerBooths = document.getElementsByClassName('cornerBooth');
+            const longTables = document.getElementsByClassName('longTable');
+            const roundTables = document.getElementsByClassName('roundTable');
+            const squareTables = document.getElementsByClassName('squareTable');
+
+            //Corner booth select function
+            Array.from(cornerBooths).forEach(table => {
+                table.addEventListener('click', () => {
+                    var tableInfo = table.innerHTML;
+                
+                    sessionStorage.setItem("table", tableInfo);
+                    sessionStorage.setItem("type", "cornerBooth");
+                    sessionStorage.setItem("id", table.id);
+                    location.href = "tableTemplate.html";
+                });
+            });
+
+            //Long table & booth select function
+            Array.from(longTables).forEach(table => {
+                table.addEventListener('click', () => {
+                    var tableInfo = table.innerHTML;
+
+                    sessionStorage.setItem("table", tableInfo);
+                    sessionStorage.setItem("type", "longTable");
+                    location.href = "tableTemplate.html";
+                });
+            });
+
+            //Round table select function
+            Array.from(roundTables).forEach(table => {
+                table.addEventListener('click', () => {
+                    var tableInfo = table.innerHTML;
+                
+                    sessionStorage.setItem("table", tableInfo);
+                    sessionStorage.setItem("type", "roundTable");
+                    location.href = "tableTemplate.html";
+                });
+            });
+
+            //Square table select function
+            Array.from(squareTables).forEach(table => {
+                table.addEventListener('click', () => {
+                    var tableInfo = table.innerHTML;
+                
+                    sessionStorage.setItem("table", tableInfo);
+                    sessionStorage.setItem("type", "squareTable");
+                    location.href = "tableTemplate.html";
+                });
+            });
+
+            function goBack() {
+                window.location = "UserHomeScreen.html";
+            }
+
+            //For each string reply for each table --> use this function multiple times for each table
+            function refreshShort() {
+                //Splits short reply into an array of 3 items --> table | tableID | bool
+                var replyArray = serverReply1.split(":");
+
+                //Checking if bool is true or false to decide table color
+                //If true or false, uses ID to find table and update style attribute
+                if (replyArray[2].includes("true") == true) {
+                    document.getElementById(replyArray[1]).style = "background-color: #6feaf6";
+                } else {
+                    document.getElementById(replyArray[1]).style = "background-color: #FE542D";
+                }
+            }
+
+            //For one long string for all tables --> use this function one for all tables
+            function refreshLong() {
+                //Splits every item in long reply into array, every three items is the table, tableID, and bool
+                var replyArray = serverReply2.split(":");
+
+                //Count for skipping every 3 items to next table
+                var count = 0;
+                //For loop to loop through every table
+                for (var x = 1; x < 24; x++) {
+                    if (replyArray[count + 2].includes("true") == true) {
+                        document.getElementById(replyArray[count + 1]).style = "background-color: #6feaf6";
+                    } else {
+                        document.getElementById(replyArray[count + 1]).style = "background-color: #FE542D";
+                    }
+                    count += 3;
+                }
+            }
+
+        </script>
+    </body>
+</html>
