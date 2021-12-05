@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello WebSocket2</title>
+  <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/main.css" rel="stylesheet">
+  <script src="/webjars/jquery/jquery.min.js"></script>
+  <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+  <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+  <script src="/app2.js"></script>
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+  enabled. Please enable
+  Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+    </div>
+    <div class="col-md-6">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="name">Please open the Javascript console.</label>
+        </div>
+
+
+        <button id="send" class="btn btn-default" type="submit" onclick="isTable1Free()">is Table 1 free?</button>
+        <button id="send1" class="btn btn-default" type="submit" onclick="addJohnnyToQueue()">addJohnnyToQueue</button>
+        <button id="send2" class="btn btn-default" type="submit" onclick="addLeoToQueue()">addLeoToQueue</button>
+        <button id="send3" class="btn btn-default" type="submit" onclick="addScarletToQueue()">addScarletToQueue</button>
+        <button id="send4" class="btn btn-default" type="submit" onclick="getTable1QueueSize()">getTable1QueueSize</button>
+        <button id="send5" class="btn btn-default" type="submit" onclick="getAllTables()">getAllTables</button>
+
+
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table id="conversation" class="table table-striped">
+        <thead>
+        <tr>
+          <th>Server Responses:</th>
+        </tr>
+        </thead>
+        <tbody id="greetings">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+
+<script>
+
+  async function isTable1Free() {
+    // [1]
+    sendRequest("isFree:table:1");
+    while (response == null) {
+      await new Promise(r => setTimeout(r, 100));
+    }
+    console.log("[1]: " + response);
+    var splitResponse = response.split(":");
+    console.log(">> Is table "+splitResponse[1]+" free? " + splitResponse[2]);
+    $("#greetings").append("<tr><td>" + response + "</td></tr>");
+  }
+
+  async function addJohnnyToQueue() {
+    // [3] add johnny depp's party of two to table 1, he's open to different seating
+    sendRequest("queue:table:1:Jonny Depp:919919919:2:true");
+    while (response == null) {
+      await new Promise(r => setTimeout(r, 100));
+    }
+    console.log("[3]: " + response);
+    $("#greetings").append("<tr><td>" + response + "</td></tr>");
+  }
+
+
+  async function addLeoToQueue() {
+    // [4] ALSO add Leonardo's party of one to table 1, he's NOT open to different seating
+    sendRequest("queue:table:1:Leonardo:919919919:1:false");
+    while (response == null) {
+        await new Promise(r => setTimeout(r, 100));
+    }
+    console.log("[4]: " + response);
+    $("#greetings").append("<tr><td>" + response + "</td></tr>");
+  }
+
+  async function addScarletToQueue() {
+    // [4] ALSO add Leonardo's party of one to table 1, she's NOT open to different seating
+    sendRequest("queue:table:1:Scarlet:919919919:1:false");
+    while (response == null) {
+      await new Promise(r => setTimeout(r, 100));
+    }
+    console.log("[7]: " + response);
+    $("#greetings").append("<tr><td>" + response + "</td></tr>");
+  }
+
+
+  async function getTable1QueueSize() {
+
+    // [5] get the queue size for table 1, we'd expect 1 person sat and 1 person queued.
+    sendRequest("getQueueSize:table:1");
+    while (response == null) {
+        await new Promise(r => setTimeout(r, 100));
+    }
+    console.log("[5]: " + response);
+    $("#greetings").append("<tr><td>" + response + "</td></tr>");
+  }
+
+  async function getAllTables() {
+    // [1]
+    sendRequest("getAllTables");
+    while (response == null) {
+      await new Promise(r => setTimeout(r, 100));
+    }
+    console.log("[8]: " + response);
+    $("#greetings").append("<tr><td>" + response + "</td></tr>");
+  }
+
+
+
+
+
+</script>
+
+</html>
